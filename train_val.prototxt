@@ -15,7 +15,7 @@ layer {
  }
  data_param {
     source: "data/kaggle/kaggle_train_lmdb"
-    batch_size: 256
+    batch_size: 48
     backend: LMDB
   }
   top: "data"
@@ -36,7 +36,7 @@ layer {
  }
  data_param {
     source: "data/kaggle/kaggle_test_lmdb"
-    batch_size: 200
+    batch_size: 40
     backend: LMDB
   }
   top: "data"
