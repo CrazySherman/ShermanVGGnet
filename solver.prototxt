@@ -3,7 +3,7 @@ net: "models/ShermanVGGnet/train_val.prototxt"
 test_iter: 100
 test_interval: 500
 # lr for fine-tuning should be lower than when starting from scratch
-base_lr: 0.00003
+base_lr: 0.0001
 lr_policy: "step"
 gamma: 0.1
 # stepsize should also be lower, as we're closer to being done
@@ -12,7 +12,7 @@ display: 20
 max_iter: 50000 
 momentum: 0.9
 weight_decay: 0.0005
-snapshot: 5000
+snapshot: 10000
 snapshot_prefix: "models/ShermanVGGnet/VGG_Kaggle"
 # uncomment the following to default to CPU mode solving
 solver_mode: GPU
