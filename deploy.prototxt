@@ -341,5 +341,5 @@ layer {
   bottom: "kaggle_fc8"
   top: "prob"
   name: "prob"
-  type: "SoftmaxWithLoss"
+  type: "Softmax"
 }

@@ -32,7 +32,7 @@ def predict(model_name, test_img_path, lim=None, batch=32):
         f_full = os.path.join(test_img_path, f)
         # input dimension: 1 224 224
         img = cv2.imread(f_full)
-        img = cv2.resize(img, (256,256))
+        img = cv2.resize(img, (256,256)).astype(np.float32)
         imgs.append(img)
         count += 1
         img_names += [f]
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         raise NameError('usage: predict <model name> <image dir>')
     # dummy test
-    res = predict(sys.argv[1], sys.argv[2], lim=True)
+    res = predict(sys.argv[1], sys.argv[2])
     classes = [format("c%d" %x) for x in range(10)]
     
     names = []
@@ -67,6 +67,6 @@ if __name__ == '__main__':
     
     results = pd.DataFrame(np.concatenate(preds), columns=classes)
     #print (results.head(n=30))
-    print results
-    #results.loc[:,'img'] = pd.Series(names, index=results.index)
-    #results.to_csv('vgg_submission.csv', index=False)
+    #print results
+    results.loc[:,'img'] = pd.Series(names, index=results.index)
+    results.to_csv('vgg_submission.csv', index=False)
